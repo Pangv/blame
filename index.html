@@ -26,12 +26,18 @@
     #badge {
       display: block;
       margin: 1rem 0rem;
-      padding: 1rem 4rem;
+      padding: 1rem 1rem 1rem 2rem;
+    }
+
+    .badge {
+      margin-left: 2rem;
     }
 
 
+    .btn-warning,
     .btn-danger {
       float: right;
+      margin-left: .2rem;
     }
   </style>
 </head>
@@ -79,7 +85,8 @@
       <!--   Reset   -->
       <div class="row">
         <div class="col-sm-12">
-          <button class="btn btn-danger" @click="reset()">Reset</button>
+          <button class="btn btn-danger" @click="fullReset()">FullReset</button>
+          <button class="btn btn-warning" @click="softReset()">SoftReset</button>
         </div>
       </div>
     </div>

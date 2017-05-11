@@ -11,7 +11,12 @@ var app = new Vue({
     add: function() {
       this.items.push({ evtName: this.newEvent, count: 0 });
     },
-    reset: function() {
+    softReset: function(){
+      this.items.forEach(function(item){
+        item.count = 0;
+      })
+    },
+    fullReset: function() {
       this.items = [];
     }
   }
