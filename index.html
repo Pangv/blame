@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Bootstrap 101 Template</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
+
+  <script src="https://unpkg.com/vue"></script>
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+  <style media="screen">
+    #badge {
+      display: block;
+      margin: 1rem 0rem;
+      padding: 1rem 4rem;
+    }
+
+
+    .btn-danger {
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="leading">
+      Blame
+    </h1>
+
+        <h1 id="watchface"><time>00:00:00</time></h1>
+        <button class="btn btn-default" id="start">start</button>
+        <button class="btn btn-default" id="stop">stop</button>
+        <button class="btn btn-default" id="clear">res</button>
+
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div id="app">
+      <!--  Add    -->
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4">
+          <div>
+            <div class="form-group">
+              <label for="newEvent">Faux Pas</label>
+              <input class="form-control" id="newEvent" type="text" v-model="newEvent" />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-success" type="button" @click="add()">Hinzufügen</button>
+            </div>
+          </div>
+        </div>
+        <!--  List    -->
+        <div class="col-sm-12 col-md-6 col-lg-8">
+          <h5>Liste</h5>
+          <button id="badge" v-for="item in items" :key="item" class="btn btn-primary" type="button" @click="addOne(item)">
+          {{item.evtName}}
+          <span class="badge">{{item.count}}</span>
+        </button>
+        </div>
+      </div>
+      <!--   Reset   -->
+      <div class="row">
+        <div class="col-sm-12">
+          <button class="btn btn-danger" @click="reset()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="./app.js"></script>
+  <script src="./stopwatch.js" charset="utf-8"></script>
+</body>
+
+</html>
