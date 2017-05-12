@@ -9,7 +9,14 @@ var app = new Vue({
       item.count += 1;
     },
     add: function() {
-      this.items.push({ evtName: this.newEvent, count: 0 });
+      var input = document.getElementById('newEvent');
+      if (input.value !== '') {
+        this.items.push({ evtName: this.newEvent, count: 0 });
+        input.style.border = '';
+        input.value = '';
+      }else {
+        input.style.border = '1px solid red';
+      }
     },
     softReset: function(){
       this.items.forEach(function(item){
