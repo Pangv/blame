@@ -14,6 +14,8 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/darkly/bootstrap.min.css" rel="stylesheet" integrity="sha384-S7YMK1xjUjSpEnF4P8hPUcgjXYLZKK3fQW1j5ObLSl787II9p8RO9XUGehRmKsxd" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="style.css">
+
   <script src="https://unpkg.com/vue"></script>
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -23,71 +25,54 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-  <style media="screen">
-    #badge {
-      display: block;
-      margin: 1rem 0rem;
-      padding: 1rem 1rem 1rem 2rem;
-    }
-
-    .badge {
-      margin-left: 2rem;
-    }
-
-
-    .btn-warning,
-    .btn-danger {
-      float: right;
-      margin-left: .2rem;
-    }
-  </style>
 </head>
 
 <body>
-  <div class="container-fluid">
-    <div class="jumbotron">
-      <div class="container">
-        <h1 class="leading">
-      Blame
-    </h1>
 
-        <h1 id="watchface"><time>00:00:00</time></h1>
-        <button class="btn btn-default" id="start">start</button>
-        <button class="btn btn-default" id="stop">stop</button>
-        <button class="btn btn-default" id="clear">res</button>
-
-      </div>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="leading">
+      Blame 'em
+      </h1>
+      <h1 id="watchface" class="watchface"><time>00:00:00</time></h1>
+      <button class="btn btn-default" id="startstop">
+        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+      </button>
+      <button class="btn btn-default" id="clear">
+        <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
+
   <div class="container-fluid">
     <div id="app">
       <!--  Add    -->
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4">
-          <div>
+          <div class="underline">
             <div class="form-group">
               <label for="newEvent">Faux Pas</label>
-              <input class="form-control" id="newEvent" type="text" v-model="newEvent" required=""/>
+              <input class="form-control" id="newEvent" type="text" v-model="newEvent" placeholder="Ähm, Quasi, Halt, usw..." @keyup.enter="add()" required="" onfocus="select()" autofocus="" />
             </div>
             <div class="form-group">
               <button class="btn btn-success" type="button" @click="add()">Hinzufügen</button>
+              <!-- Reset -->
+              <button class="btn btn-danger" @click="fullReset()">
+                <span class="glyphicon glyphicon-refresh"></span>
+              </button>
+              <button class="btn btn-warning" @click="softReset()">
+                <span class="glyphicon glyphicon-repeat"></span>
+              </button>
             </div>
           </div>
         </div>
         <!--  List    -->
         <div class="col-sm-12 col-md-6 col-lg-8">
-          <h5>Liste</h5>
-          <button id="badge" v-for="item in items" :key="item" class="btn btn-primary" type="button" @click="addOne(item)">
+          <button v-for="item in items" :key="item" class="btn btn-primary badge-item" type="button" @click="addOne(item)">
           {{item.evtName}}
           <span class="badge">{{item.count}}</span>
         </button>
-        </div>
-      </div>
-      <!--   Reset   -->
-      <div class="row">
-        <div class="col-sm-12">
-          <button class="btn btn-danger" @click="fullReset()">FullReset</button>
-          <button class="btn btn-warning" @click="softReset()">SoftReset</button>
         </div>
       </div>
     </div>

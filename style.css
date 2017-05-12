@@ -1,0 +1,50 @@
+body {
+  box-sizing: border-box;
+  *behavior: url(/scripts/boxsizing.htc);
+}
+
+.badge-item {
+  display: inline-block;
+  margin: 1rem .5rem;
+  padding: 1rem 1rem 1rem 2rem;
+}
+
+.badge {
+  margin-left: 2rem;
+}
+
+.btn {
+  border-radius: 0;
+}
+
+.btn-warning, .btn-danger {
+  float: right;
+  margin-left: .2rem;
+}
+
+.leading {
+  text-transform: uppercase;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.container-fluid .jumbotron {
+  border-radius: 0;
+}
+
+.underline {
+  border-bottom: 1px solid #747474;
+}
+
+.watchface {
+  font-family: 'Fira Code', 'Lucida Console', 'Courier New', monospace;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  background: #3a6186;
+  background: -webkit-linear-gradient(to right, #89253e, #3a6186);
+  background: linear-gradient(to right, #89253e, #3a6186);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

@@ -1,10 +1,12 @@
 (function(){
   var h1 = document.getElementById('watchface'),
-      start = document.getElementById('start'),
-      stop = document.getElementById('stop'),
+      // start = document.getElementById('start'),
+      // stop = document.getElementById('stop'),
+      startstop = document.getElementById('startstop'),
       clear = document.getElementById('clear'),
       seconds = 0, minutes = 0, hours = 0,
-      t;
+      t,
+      running = false;
 
   function add() {
       seconds++;
@@ -23,15 +25,17 @@
   }
   function timer() {
       t = setTimeout(add, 1000);
+      running = true;
   }
 
-
-  /* Start button */
-  start.onclick = timer;
-
-  /* Stop button */
-  stop.onclick = function() {
+  startstop.onclick = function() {
+    if (running) {
       clearTimeout(t);
+      running = false;
+    }else {
+      t = setTimeout(add, 1000);
+      running = true;
+    }
   }
 
   /* Clear button */

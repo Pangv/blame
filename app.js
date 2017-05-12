@@ -14,6 +14,9 @@ var app = new Vue({
         this.items.push({ evtName: this.newEvent, count: 0 });
         input.style.border = '';
         input.value = '';
+        input.select();
+        input.focus();
+
       }else {
         input.style.border = '1px solid red';
       }
