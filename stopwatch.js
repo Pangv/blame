@@ -1,8 +1,7 @@
 (function(){
   var h1 = document.getElementById('watchface'),
-      // start = document.getElementById('start'),
-      // stop = document.getElementById('stop'),
       startstop = document.getElementById('startstop'),
+      watchsymbol = document.getElementById('watchsymbol'),
       clear = document.getElementById('clear'),
       seconds = 0, minutes = 0, hours = 0,
       t,
@@ -32,9 +31,14 @@
     if (running) {
       clearTimeout(t);
       running = false;
+      watchsymbol.classList.remove("glyphicon-pause");
+      watchsymbol.classList.add("glyphicon-play");
     }else {
       t = setTimeout(add, 1000);
       running = true;
+      watchsymbol.classList.remove("glyphicon-play");
+      watchsymbol.classList.add("glyphicon-pause");
+
     }
   }
 

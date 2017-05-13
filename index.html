@@ -34,10 +34,11 @@
       <h1 class="leading">
       Blame 'em
       </h1>
-      <h1 id="watchface" class="watchface"><time>00:00:00</time></h1>
+      <h1 id="watchface" class="watchface">
+        <time>00:00:00</time>
+      </h1>
       <button class="btn btn-default" id="startstop">
-        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
-        <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+        <span id="watchsymbol" class="glyphicon glyphicon-play" aria-hidden="true"></span>
       </button>
       <button class="btn btn-default" id="clear">
         <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
@@ -45,18 +46,27 @@
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container">
     <div id="app">
       <!--  Add    -->
       <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4">
           <div class="underline">
+            <div class="totalSins">
+              <h4>Total Sins</h4>
+              <p>{{ totalSins }}</p>
+            </div>
+
             <div class="form-group">
-              <label for="newEvent">Faux Pas</label>
+              <label for="">Best Of</label><br>
+              <input id="bestOf" class="btn btn-primary bestOf" type="button" v-for="best in bestOf" v-bind:value="best.best" @click="addBestOf(best.best)">
+            </div>
+            <div class="form-group">
+              <label for="newEvent">Custom</label>
               <input class="form-control" id="newEvent" type="text" v-model="newEvent" placeholder="Ähm, Quasi, Halt, usw..." @keyup.enter="add()" required="" onfocus="select()" autofocus="" />
             </div>
             <div class="form-group">
-              <button class="btn btn-success" type="button" @click="add()">Hinzufügen</button>
+              <button class="btn btn-primary" type="button" @click="add()">Hinzufügen</button>
               <!-- Reset -->
               <button class="btn btn-danger" @click="fullReset()">
                 <span class="glyphicon glyphicon-refresh"></span>
@@ -69,7 +79,7 @@
         </div>
         <!--  List    -->
         <div class="col-sm-12 col-md-6 col-lg-8">
-          <button v-for="item in items" :key="item" class="btn btn-primary badge-item" type="button" @click="addOne(item)">
+          <button v-for="item in items" :key="item" class="btn btn-info badge-item" type="button" @click="addOne(item)">
           {{item.evtName}}
           <span class="badge">{{item.count}}</span>
         </button>
