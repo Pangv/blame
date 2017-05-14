@@ -1,0 +1,22 @@
+{
+  "short_name": "Blame",
+  "name": "",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "type": "image/svg",
+      "sizes": "48x48"
+    },
+    {
+      "src": "icon-192.svg",
+      "type": "image/svg",
+      "sizes": "96x96"
+    },
+    {
+      "src": "icon-192.svg",
+      "type": "image/svg",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html?launcher=true"
+}

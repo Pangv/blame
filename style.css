@@ -55,10 +55,6 @@ body {
   border-radius: 0;
 }
 
-.underline {
-  border-bottom: 1px solid #747474;
-}
-
 .watchface {
   font-family: 'Fira Code', 'Lucida Console', 'Courier New', monospace;
   padding-right: 1rem;

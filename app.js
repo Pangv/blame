@@ -27,7 +27,7 @@ var app = new Vue({
       item.count += 1;
       this.totalSins++;
     },
-    addBestOf: function(best) {
+    addTop5: function(best) {
       this.items.push({
         evtName: best,
         count: 0
@@ -41,9 +41,7 @@ var app = new Vue({
           count: 0
         });
         input.style.border = '';
-        input.value = '';
-        input.select();
-        input.focus();
+        $('#newEvent').val('');
       } else {
         input.style.border = '1px solid red';
       }
