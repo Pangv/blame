@@ -41,7 +41,7 @@ var app = new Vue({
           count: 0
         });
         input.style.border = '';
-        $('#newEvent').val('');
+        input.focus();
       } else {
         input.style.border = '1px solid red';
       }
