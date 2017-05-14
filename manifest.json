@@ -3,20 +3,20 @@
   "name": "",
   "icons": [
     {
-      "src": "icon-192.svg",
+      "src": "media/favicon.ico",
       "type": "image/svg",
       "sizes": "48x48"
     },
     {
-      "src": "icon-192.svg",
+      "src": "media/favicon.ico",
       "type": "image/svg",
       "sizes": "96x96"
     },
     {
-      "src": "icon-192.svg",
+      "src": "media/favicon.ico",
       "type": "image/svg",
       "sizes": "192x192"
     }
   ],
-  "start_url": "index.html?launcher=true"
+  "start_url": "index.html"
 }
