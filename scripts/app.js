@@ -28,23 +28,50 @@ var app = new Vue({
       this.totalSins++;
     },
     addTop5: function(best) {
-      this.items.push({
-        evtName: best,
-        count: 0
-      });
+      var exists = false;
+      var duplicate;
+      for (var i = 0; i < this.items.length; i++) {
+        if (best === this.items[i].evtName) {
+          exists = true;
+          duplicate = this.items[i];
+        }
+      }
+      if (exists) {
+        duplicate.count++;
+        this.totalSins++;
+      } else {
+        this.items.push({
+          evtName: best,
+          count: 0
+        });
+      }
     },
     add: function() {
       var input = document.getElementById('newEvent');
-      if (input.value !== '') {
-        this.items.push({
-          evtName: this.newEvent,
-          count: 0
-        });
-        input.style.border = '';
-        this.newEvent = '';
-        input.focus();
+      //
+      var exists = false;
+      var duplicate;
+      for (var i = 0; i < this.items.length; i++) {
+        if (input.value === this.items[i].evtName) {
+          exists = true;
+          duplicate = this.items[i];
+        }
+      }
+      if (exists) {
+        duplicate.count++;
+        this.totalSins++;
       } else {
-        input.style.border = '1px solid red';
+        if (input.value !== '') {
+          this.items.push({
+            evtName: this.newEvent,
+            count: 0
+          });
+          input.style.border = '';
+          this.newEvent = '';
+          input.focus();
+        } else {
+          input.style.border = '1px solid red';
+        }
       }
     },
     softReset: function() {
