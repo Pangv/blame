@@ -48,7 +48,6 @@ var app = new Vue({
     },
     add: function() {
       var input = document.getElementById('newEvent');
-      //
       var exists = false;
       var duplicate;
       for (var i = 0; i < this.items.length; i++) {
@@ -60,14 +59,15 @@ var app = new Vue({
       if (exists) {
         duplicate.count++;
         this.totalSins++;
+        this.newEvent = '';
       } else {
         if (input.value !== '') {
           this.items.push({
             evtName: this.newEvent,
             count: 0
           });
-          input.style.border = '';
           this.newEvent = '';
+          input.style.border = '';
           input.focus();
         } else {
           input.style.border = '1px solid red';
@@ -82,6 +82,17 @@ var app = new Vue({
     fullReset: function() {
       this.items = [];
       this.totalSins = 0;
+    },
+    isDuplicate: function() {
+      var exists = false;
+      var duplicate;
+      for (var i = 0; i < this.items.length; i++) {
+        if (input.value === this.items[i].evtName) {
+          exists = true;
+          duplicate = this.items[i];
+        }
+      }
+      return exists;
     }
   }
 });
