@@ -1,22 +1,23 @@
 import './App.css'
 import {SetStateAction, useEffect, useState} from "react";
-import Stopwatch from "./Stopwatch.tsx";
-import Blames from "./Blames.tsx";
-import {createKeyword, increaseKeywordCount, listenForChanges, signIn, getTop5Keywords, resetAllKeywordCounts} from "./firebase.ts";
+import Stopwatch from "./components/Stopwatch.tsx";
+import Blames from "./components/Blames.tsx";
+import {
+    createKeyword,
+    increaseKeywordCount,
+    listenForChanges,
+    getTop5Keywords,
+    resetAllKeywordCounts
+} from "./firebase.ts";
 import CIcon from "@coreui/icons-react";
 import {cilLibraryAdd, cilReload, cilSync} from "@coreui/icons";
-import {auth, signOut} from "./fbAuth.ts";
-import {} from "./fbDatabase.ts";
+import Authentication from "./components/Authentication.tsx";
 
 function App() {
 
     const [keywords, setKeywords] = useState([]);
     const [newKeyword, setNewKeyword] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-
     const [top5, setTop5] = useState([])
-
 
     useEffect(() => {
         const unsubscribe = listenForChanges(setKeywords);
@@ -26,7 +27,7 @@ function App() {
             let top5Keywords: Keyword[] = await getTop5Keywords();
             let top5Keys = top5Keywords.map((keyword, index) => {
                 return (<button key={index} className="bg-blue-700 text-white mr-1 px-1"
-                        onClick={() => addKeywordFromTop5(keyword.name)}>{keyword.name}</button>)
+                                onClick={() => addKeywordFromTop5(keyword.name)}>{keyword.name}</button>)
             });
 
             // @ts-ignore
@@ -66,15 +67,7 @@ function App() {
             setNewKeyword(event.target.value);
         }
 
-        // @ts-ignore
-        if (event.target.name === "email") {
-            setEmail(event.target.value);
-        }
 
-        // @ts-ignore
-        if (event.target.name === "password") {
-            setPassword(event.target.value);
-        }
     }
 
     const handleKeyDown = (event: { key: string; }) => {
@@ -91,21 +84,9 @@ function App() {
         <>
             <div className="w-[400px] mx-auto flex-col ">
 
+                <Authentication/>
                 <h1 className="title text-3xl text-white mt-1 text-center font-merriweather">Blame 'em</h1>
 
-                <div className="flex justify-between text-white text-xs">
-                    {!auth.currentUser ?
-                        <form action="" className="p-1">
-                            <input autoComplete="username" name="email" type="email" onChange={handleInputChange}/>
-                            <input autoComplete="current-password" name="password" type="password" onChange={handleInputChange}/>
-                        </form>
-                        : <span className="p-1">{auth.currentUser.email}</span>}
-
-                    {auth.currentUser ?
-                        <button className="mx-2 border border-amber-400 p-1" onClick={() => signOut()}>Logout</button> :
-                        <button className="mx-2 border border-amber-400 p-1"
-                                onClick={() => signIn(email, password)}>Login</button>}
-                </div>
                 <Stopwatch/>
 
                 <h2 className="text-white text-xl text-center mb-2">Shorts</h2>
