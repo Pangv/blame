@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import Watch from "./Watch.ts";
+import Watch from "../Watch.ts";
 import CIcon from "@coreui/icons-react";
 import {cilMediaPause, cilMediaPlay, cilMediaStop} from "@coreui/icons";
 
