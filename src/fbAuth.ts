@@ -1,7 +1,7 @@
 import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from "firebase/auth";
 
 
-// make a auth object available to the rest of the app
+// make an auth object available to the rest of the app
 export let auth: any;
 
 // this function creates a new user in the database as part of the "users" collection in a real-time database
