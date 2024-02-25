@@ -20,10 +20,10 @@ export const createKeyword = (keyword: string) => {
     get(child(keywordRef,'count')).then((snapshot) => {
         if (snapshot.exists()) {
             // If the keyword exists, increment the count
-            set(keywordRef, {name: keyword, totalcount: snapshot.val()+1, count: snapshot.val() + 1});
+            set(keywordRef, {name: keyword, totalCount: snapshot.val()+1, count: snapshot.val() + 1});
         } else {
             // If the keyword does not exist, create it with a count of 1
-            set(keywordRef, {name: keyword, totalcount: 1, count: 1});
+            set(keywordRef, {name: keyword, totalCount: 1, count: 1});
         }
     });
 }
@@ -39,7 +39,7 @@ export const getTop5Keywords = async () => {
     });
 
     // get the top 5 keywords
-    top5Keywords.sort((a, b) => b.totalcount - a.totalcount);
+    top5Keywords.sort((a, b) => b.totalCount - a.totalCount);
     top5Keywords.splice(5);
 
     return top5Keywords;
@@ -70,7 +70,7 @@ export const listenForChanges = (callback:  Dispatch<SetStateAction<never[]>>) =
 export const increaseKeywordCount = (keyword: string) => {
     const keywordRef = ref(database, 'keywords/' + keyword);
     let totalCounter = 0;
-    get(child(keywordRef, 'totalcount')).then((snapshot) => {
+    get(child(keywordRef, 'totalCount')).then((snapshot) => {
         if (snapshot.exists()) {
             totalCounter = snapshot.val();
         }
@@ -79,12 +79,12 @@ export const increaseKeywordCount = (keyword: string) => {
     get(child(keywordRef, 'count')).then((snapshot) => {
         if (snapshot.exists()) {
             // If the keyword exists, increment the count
-            set(keywordRef, {name: keyword, totalcount: totalCounter, count: snapshot.val() + 1});
+            set(keywordRef, {name: keyword, totalCount: totalCounter, count: snapshot.val() + 1});
         }
     });
 }
 
-// write a function thats sets all keyword counts to 0 in the database
+// write a function that's sets all keyword counts to 0 in the database
 // this function takes nothing as an argument and returns nothing
 // the function sets all keyword counts to 0 in the database
 

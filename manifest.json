@@ -1,6 +1,9 @@
 {
   "short_name": "Blame",
-  "name": "",
+  "name": "Blame",
+  "theme_color": "#000000",
+  "background_color": "#165F73",
+  "display": "standalone",
   "icons": [
     {
       "src": "media/favicon.ico",

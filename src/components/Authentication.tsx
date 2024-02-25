@@ -22,11 +22,13 @@ export default function Authentication() {
     return (
         <div className="flex justify-between text-white text-xs">
             {!auth.currentUser ?
-                <form action="" className="">
-                    <input className="py-1 px-3 mr-1 text-black" autoComplete="username" name="email" type="email"
+                <form action="" className="flex flex-wrap">
+                    <input className="py-1 px-3 mr-1 text-black" autoComplete="username" name="email"
+                           type="email"
                            onChange={handleInputChange}/>
                     <input className="py-1 px-3 mr-1 text-black" autoComplete="current-password" name="password"
-                           type="password" onChange={handleInputChange}/>
+                           type="password"
+                           onChange={handleInputChange}/>
                 </form>
                 : <span className="p-1">{auth.currentUser.email}</span>}
 
